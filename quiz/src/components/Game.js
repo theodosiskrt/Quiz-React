@@ -10,8 +10,7 @@ const Game = ({isHidden, questions, score, setScore, EndGame}) => {
     useEffect(() => {
         setQuestion(questions[i]);
     },[i])
-    //good job
-    //<3
+
     const checkAnswer = (answer) => {
         if(answer === question.correctAnswer){
             setScore(score + 15);
