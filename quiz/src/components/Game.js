@@ -1,26 +1,39 @@
 import React from 'react'
-import { CenteredDiv } from './styledComponents/styles.js'
+import { CenteredDiv, Title } from './styledComponents/styles.js'
 import Question from './Question.js'
 
+import { useState, useEffect } from 'react';
 
+const Game = ({isHidden, questions, score, setScore, EndGame}) => {
+    const [i, seti] = useState(0);
+    const [question, setQuestion] = useState(questions[0]);
+    useEffect(() => {
+        setQuestion(questions[i]);
+    },[i])
+    //good job
+    //<3
+    const checkAnswer = (answer) => {
+        if(answer === question.correctAnswer){
+            setScore(score + 15);
+        }
+        if(i < questions.length - 1){
+            seti(i + 1);
+        }
+        else{
+            seti(0);
+            EndGame();
+        }
 
-const Game = ({isHidden, questions}) => {
-    let i = 0;
-    let score = 0
-
-    const checkAnswer = (answer, correctAnswer) => {
-        console.log(i)
-        i++;
       }
-
-    console.log(questions)
-    console.log(i)
-    return isHidden ? (
+    //   console.log("i is ", i)
+    return !isHidden ? (
         <div>
             <CenteredDiv>
-                {questions.map((question, idx) => idx === i ? <Question key={idx} question={question} checkAnswer={checkAnswer}/> : null )}
-
+                {/* {console.log("i, ", i)} */}
+                <Question key={i} question={question} checkAnswer={checkAnswer}/> 
+                <Title>Score {score}</Title>
             </CenteredDiv>
+            
         </div>
     ) : null
 }

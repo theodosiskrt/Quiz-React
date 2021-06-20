@@ -6,7 +6,7 @@ const Question = ({question, checkAnswer}) => {
         <div>
             <Title>{question.question}</Title>
             <div style = {{textAlign: "center"}}>
-                {question.possibleAnswers.map((answer, idx) => (<Button key={idx}size={2} marginY={5} marginX={10} onClick={() => checkAnswer(answer, question.correctAnswer)}>{answer}</Button>))}
+                {question.possibleAnswers.map((answer, idx) => (< Button key={idx} size={2} marginY={5} marginX={10} onClick={() => {checkAnswer(answer)}} >{answer}</Button>))}
             </div>
         </div>
     )

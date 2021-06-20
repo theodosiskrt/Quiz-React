@@ -19,6 +19,7 @@ font-size: ${({size}) => size}em;
 padding: 0.5em;
 margin: ${({marginY}) => marginY || 0}% ${({marginX}) => marginX || 0}%;
 min-width:7em;
+max-width:8em;
 border-radius:0.2em;
 border: solid 2px blue;
 background-color: LightBlue;
